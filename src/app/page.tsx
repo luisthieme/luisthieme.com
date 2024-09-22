@@ -53,7 +53,7 @@ export default function PortfolioLandingPage() {
             <main className="flex-1">
                 <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gray-100 dark:bg-gray-800 overflow-hidden">
                     <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-                        <div className="relative w-full h-full max-w-[250px] max-h-[375px]">
+                        <div className="relative w-full h-full max-w-[250px] max-h-[375px] mt-[-50px] md:mt-0">
                             <Image
                                 src="/jumping_luis.png"
                                 alt="Luis jumping enthusiastically"
