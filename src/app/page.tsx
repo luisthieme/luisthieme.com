@@ -1,11 +1,37 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Github, Linkedin, Mail, Code, Globe, Server } from 'lucide-react';
+import { Github, Linkedin, Mail, Code, Globe, Server, X, CheckCircle } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function PortfolioLandingPage() {
+    const [isVisible, setIsVisible] = useState(false);
+    const [shouldRender, setShouldRender] = useState(false);
+
+    const showNotification = () => {
+        setShouldRender(true);
+        setTimeout(() => setIsVisible(true), 10);
+    };
+
+    const hideNotification = () => {
+        setIsVisible(false);
+        setTimeout(() => setShouldRender(false), 500);
+    };
+
+    useEffect(() => {
+        if (isVisible) {
+            const timer = setTimeout(() => {
+                hideNotification();
+            }, 3500);
+
+            return () => clearTimeout(timer);
+        }
+    }, [isVisible]);
+
     const skills = [
         { name: 'React', rating: 5 },
         { name: 'Next.js', rating: 4 },
@@ -33,6 +59,30 @@ export default function PortfolioLandingPage() {
 
     return (
         <div className="flex flex-col min-h-screen">
+            {shouldRender && (
+                <div
+                    className={`fixed top-4 right-4 w-full max-w-sm p-4 rounded-lg shadow-lg bg-green-500 text-white
+                        transform transition-all duration-500 ease-in-out z-50
+                        ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}
+                        sm:w-72`}
+                >
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2 flex-grow min-w-0">
+                            <CheckCircle className="h-5 w-5 flex-shrink-0" />
+                            <p className="text-sm font-medium truncate">Message was sent!</p>
+                        </div>
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-6 w-6 p-0 text-white hover:bg-white/20 flex-shrink-0 ml-2"
+                            onClick={hideNotification}
+                        >
+                            <X className="h-4 w-4" />
+                        </Button>
+                    </div>
+                </div>
+            )}
+
             <header className="px-4 lg:px-6 h-14 flex items-center">
                 <Link className="flex items-center justify-center" href="#">
                     <span className="sr-only">Luis Thieme</span>
@@ -147,7 +197,7 @@ export default function PortfolioLandingPage() {
                             Get in Touch
                         </h2>
                         <div className="max-w-2xl mx-auto">
-                            <form className="space-y-4">
+                            <form className="space-y-4" action={showNotification}>
                                 <Input placeholder="Your Name" />
                                 <Input type="email" placeholder="Your Email" />
                                 <Textarea placeholder="Your Message" />
