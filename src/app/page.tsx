@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Github, Linkedin, Mail, Code, Globe, Server, X, CheckCircle } from 'lucide-react';
+import { Github, Linkedin, Mail, Code, Globe, Server, X, CheckCircle, Wrench, Workflow } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -33,27 +33,30 @@ export default function PortfolioLandingPage() {
     }, [isVisible]);
 
     const skills = [
-        { name: 'React', rating: 5 },
-        { name: 'Next.js', rating: 4 },
+        { name: 'React', rating: 4 },
+        { name: 'Next.js', rating: 3.5 },
         { name: 'TypeScript', rating: 4 },
         { name: 'Node.js', rating: 3 },
-        { name: 'Tailwind CSS', rating: 5 },
-        { name: 'GraphQL', rating: 3 },
-        { name: 'Python', rating: 4 },
+        { name: 'Tailwind CSS', rating: 3.5 },
+        { name: 'GraphQL', rating: 2 },
+        { name: 'Python', rating: 2 },
         { name: 'Docker', rating: 3 },
+        { name: 'Node-RED', rating: 4.5 },
+        { name: 'BPMN', rating: 3.5 },
+        { name: 'Postgres', rating: 3 },
     ];
 
     const projects = [
-        { name: 'Web App', icon: Globe },
-        { name: 'API Service', icon: Server },
-        { name: 'Mobile App', icon: Code },
+        { name: 'Full Stack Web Development', icon: Globe, link: '/' },
+        { name: 'Business Process Management', icon: Wrench, link: '/' },
+        { name: 'Low Code Integration', icon: Workflow, link: '/low-code' },
     ];
 
     const getSkillLevel = (rating: number) => {
         if (rating === 5) return 'Expert';
-        if (rating === 4) return 'Advanced';
-        if (rating === 3) return 'Intermediate';
-        if (rating === 2) return 'Basic';
+        if (rating >= 4) return 'Advanced';
+        if (rating >= 3) return 'Intermediate';
+        if (rating >= 2) return 'Basic';
         return 'Beginner';
     };
 
@@ -82,24 +85,6 @@ export default function PortfolioLandingPage() {
                     </div>
                 </div>
             )}
-
-            <header className="px-4 lg:px-6 h-14 flex items-center">
-                <Link className="flex items-center justify-center" href="#">
-                    <span className="sr-only">Luis Thieme</span>
-                    <span className="font-bold text-xl">Luis Thieme</span>
-                </Link>
-                <nav className="ml-auto flex gap-4 sm:gap-6">
-                    <Link className="text-sm font-medium hover:underline underline-offset-4" href="#projects">
-                        Projects
-                    </Link>
-                    <Link className="text-sm font-medium hover:underline underline-offset-4" href="#skills">
-                        Skills
-                    </Link>
-                    <Link className="text-sm font-medium hover:underline underline-offset-4" href="#contact">
-                        Contact
-                    </Link>
-                </nav>
-            </header>
             <main className="flex-1">
                 <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gray-100 dark:bg-gray-800 overflow-hidden">
                     <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
@@ -127,7 +112,7 @@ export default function PortfolioLandingPage() {
                                     <Button>Get in Touch</Button>
                                 </Link>
                                 <Link href="#projects">
-                                    <Button variant="outline">View Projects</Button>
+                                    <Button variant="outline">Core Skills</Button>
                                 </Link>
                             </div>
                         </div>
@@ -136,7 +121,7 @@ export default function PortfolioLandingPage() {
                 <section id="projects" className="w-full py-12 md:py-24 lg:py-32">
                     <div className="container px-4 md:px-6 mx-auto">
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
-                            My Projects
+                            Core Skills
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {projects.map((project, index) => (
@@ -147,9 +132,11 @@ export default function PortfolioLandingPage() {
                                         <h3 className="text-xl font-bold text-slate-800 dark:text-white">
                                             {project.name}
                                         </h3>
-                                        <Button variant="outline" size="sm">
-                                            View Project
-                                        </Button>
+                                        <Link href={project.link}>
+                                            <Button variant="outline" size="sm">
+                                                Learn more
+                                            </Button>
+                                        </Link>
                                     </div>
                                 </div>
                             ))}
@@ -158,7 +145,9 @@ export default function PortfolioLandingPage() {
                 </section>
                 <section id="skills" className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
                     <div className="container px-4 md:px-6 mx-auto">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">My Skills</h2>
+                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
+                            Tools & Technologies
+                        </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {skills.map((skill) => (
                                 <div key={skill.name} className="relative group">
@@ -212,11 +201,14 @@ export default function PortfolioLandingPage() {
             <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
                 <p className="text-xs text-gray-500 dark:text-gray-400">© 2024 Luis Thieme. All rights reserved.</p>
                 <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-                    <Link className="text-xs hover:underline underline-offset-4" href="#">
+                    <Link className="text-xs hover:underline underline-offset-4" href="https://github.com/luisthieme">
                         <span className="sr-only">GitHub</span>
                         <Github className="h-4 w-4" />
                     </Link>
-                    <Link className="text-xs hover:underline underline-offset-4" href="#">
+                    <Link
+                        className="text-xs hover:underline underline-offset-4"
+                        href="https://www.linkedin.com/in/luis-thieme-206119287/"
+                    >
                         <span className="sr-only">LinkedIn</span>
                         <Linkedin className="h-4 w-4" />
                     </Link>
