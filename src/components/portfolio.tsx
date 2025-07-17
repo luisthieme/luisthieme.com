@@ -181,10 +181,15 @@ export default function Portfolio() {
                                                 Code
                                             </Button>
                                         </Link>
-                                        <Button size="sm" className="bg-white/20 hover:bg-white/30 text-white flex-1">
-                                            <ExternalLink className="w-4 h-4 mr-2" />
-                                            Live
-                                        </Button>
+                                        <Link href={project.live}>
+                                            <Button
+                                                size="sm"
+                                                className="bg-white/20 hover:bg-white/30 text-white flex-1"
+                                            >
+                                                <ExternalLink className="w-4 h-4 mr-2" />
+                                                Live
+                                            </Button>
+                                        </Link>
                                     </div>
                                 </CardContent>
                             </Card>
