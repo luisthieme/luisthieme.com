@@ -27,7 +27,7 @@ export default function Portfolio() {
             description:
                 'A BPMN 2.0-based workflow engine written in Golang, designed to automate, monitor, and optimize business processes.',
             tech: ['Next.js', 'Golang', 'BPMN 2.0', 'SQLite'],
-            image: '/placeholder.svg?height=200&width=300',
+            image: '',
             github: 'https://github.com/luisthieme/GoMotion',
             live: '#',
         },
@@ -35,7 +35,7 @@ export default function Portfolio() {
             title: 'URL Shortener',
             description: 'Work In Progress.',
             tech: ['Node.js', 'Next.js', 'PostgreSQl'],
-            image: '/placeholder.svg?height=200&width=300',
+            image: '/shortlink.png',
             github: 'https://github.com/luisthieme/short-link',
             live: 'https://link.luisthieme.com',
         },
@@ -43,7 +43,7 @@ export default function Portfolio() {
             title: '███████ ███',
             description: 'Work In Progress.',
             tech: ['Expo', 'React Native', 'Websockets'],
-            image: '/placeholder.svg?height=200&width=300',
+            image: '',
             github: '#',
             live: '#',
         },
@@ -147,11 +147,13 @@ export default function Portfolio() {
                             >
                                 <CardContent className="p-6 flex flex-col h-full">
                                     <div className="aspect-video bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg mb-4 overflow-hidden">
-                                        {/* <img
-                                            src={project.image || '/placeholder.svg'}
-                                            alt={project.title}
-                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                        /> */}
+                                        {project.image && (
+                                            <img
+                                                src={project.image}
+                                                alt={project.title}
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                            />
+                                        )}
                                     </div>
 
                                     <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
@@ -171,20 +173,20 @@ export default function Portfolio() {
                                     </div>
 
                                     <div className="flex gap-3 mt-auto">
-                                        <Link href={project.github}>
+                                        <Link href={project.github} className="flex-1">
                                             <Button
                                                 size="sm"
                                                 variant="outline"
-                                                className="border-white/30 text-white hover:bg-white/10 flex-1 bg-transparent"
+                                                className="border-white/30 text-white hover:bg-white/10 w-full bg-transparent"
                                             >
                                                 <Github className="w-4 h-4 mr-2" />
                                                 Code
                                             </Button>
                                         </Link>
-                                        <Link href={project.live}>
+                                        <Link href={project.live} className="flex-1">
                                             <Button
                                                 size="sm"
-                                                className="bg-white/20 hover:bg-white/30 text-white flex-1"
+                                                className="bg-white/20 hover:bg-white/30 text-white w-full"
                                             >
                                                 <ExternalLink className="w-4 h-4 mr-2" />
                                                 Live
