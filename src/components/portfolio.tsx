@@ -28,7 +28,7 @@ export default function Portfolio() {
                 'A BPMN 2.0-based workflow engine written in Golang, designed to automate, monitor, and optimize business processes.',
             tech: ['Next.js', 'Golang', 'BPMN 2.0', 'SQLite'],
             image: '/placeholder.svg?height=200&width=300',
-            github: '#',
+            github: 'https://github.com/luisthieme/GoMotion',
             live: '#',
         },
         {
@@ -36,8 +36,8 @@ export default function Portfolio() {
             description: 'Work In Progress.',
             tech: ['Node.js', 'Next.js', 'PostgreSQl'],
             image: '/placeholder.svg?height=200&width=300',
-            github: '#',
-            live: '#',
+            github: 'https://github.com/luisthieme/short-link',
+            live: 'https://link.luisthieme.com',
         },
         {
             title: '███████ ███',
@@ -84,7 +84,7 @@ export default function Portfolio() {
                             <div className="space-y-4">
                                 <h1 className="text-4xl md:text-6xl font-bold text-white">Luis Thieme</h1>
                                 <p className="text-xl md:text-2xl text-purple-200">
-                                    Full Stack Developer based in German
+                                    Full Stack Developer based in Germany
                                 </p>
                                 <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
                                     Passionate about coding, investing, and entrepreneurial growth.
@@ -171,14 +171,16 @@ export default function Portfolio() {
                                     </div>
 
                                     <div className="flex gap-3 mt-auto">
-                                        <Button
-                                            size="sm"
-                                            variant="outline"
-                                            className="border-white/30 text-white hover:bg-white/10 flex-1 bg-transparent"
-                                        >
-                                            <Github className="w-4 h-4 mr-2" />
-                                            Code
-                                        </Button>
+                                        <Link href={project.github}>
+                                            <Button
+                                                size="sm"
+                                                variant="outline"
+                                                className="border-white/30 text-white hover:bg-white/10 flex-1 bg-transparent"
+                                            >
+                                                <Github className="w-4 h-4 mr-2" />
+                                                Code
+                                            </Button>
+                                        </Link>
                                         <Button size="sm" className="bg-white/20 hover:bg-white/30 text-white flex-1">
                                             <ExternalLink className="w-4 h-4 mr-2" />
                                             Live
