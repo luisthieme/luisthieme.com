@@ -71,7 +71,7 @@ export default function Portfolio() {
 
                 {/* Glassy Card */}
                 <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-                    <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl">
+                    <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl p-8 md:py-12 md:px-20 shadow-2xl">
                         <div className="space-y-6">
                             <div className="relative">
                                 <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-purple-400 to-pink-400 p-1">
