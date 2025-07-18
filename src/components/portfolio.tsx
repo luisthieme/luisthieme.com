@@ -33,7 +33,8 @@ export default function Portfolio() {
         },
         {
             title: 'URL Shortener',
-            description: 'Work In Progress.',
+            description:
+                'A simple and efficient link shortener to create clean, shareable URLs for your projects and content.',
             tech: ['Node.js', 'Next.js', 'PostgreSQl'],
             image: '/shortlink.png',
             github: 'https://github.com/luisthieme/short-link',
